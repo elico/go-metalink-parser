@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type metalink struct {
+type Metalink struct {
 	XMLName	xml.Name	`xml:"metalink"`
 	Text	string		`xml:",chardata"`
 	Files	files
@@ -58,8 +58,8 @@ type metaurl struct {
 }
 
 // Reads a local file and returns a metalink struct
-func ParseFile(filename string)(metalink, error){
-	metafile := metalink{}
+func ParseFile(filename string)(Metalink, error){
+	metafile := Metalink{}
 	xmlContent, _ := ioutil.ReadFile(filename)
 
 	err := xml.Unmarshal(xmlContent, &metafile)
@@ -70,8 +70,8 @@ func ParseFile(filename string)(metalink, error){
 }
 
 // Reads a metalink xml string and returns a metalink struct
-func ParseString(content string)(metalink, error){
-	metafile := metalink{}
+func ParseString(content string)(Metalink, error){
+	metafile := Metalink{}
 
 	err := xml.Unmarshal([]byte(content), &metafile)
 	if err != nil {
@@ -81,8 +81,8 @@ func ParseString(content string)(metalink, error){
 }
 
 // Reads a metalink xml bytes slice and returns a metalink struct
-func ParseBytes(content []byte)(metalink, error){
-	metafile := metalink{}
+func ParseBytes(content []byte)(Metalink, error){
+	metafile := Metalink{}
 
 	err := xml.Unmarshal(content, &metafile)
 	if err != nil {
@@ -92,8 +92,8 @@ func ParseBytes(content []byte)(metalink, error){
 }
 
 // Downloads a metalink xml file by a http\https url and returns a metalink struct
-func ParseFileFromUrl(link string)(metalink, error){
-	metafile := metalink{}
+func ParseFileFromUrl(link string)(Metalink, error){
+	metafile := Metalink{}
 
 	resp, err := http.Get(link)
 	if err != nil {
