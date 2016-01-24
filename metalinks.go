@@ -9,46 +9,46 @@ import (
 type Metalink struct {
 	XMLName	xml.Name	`xml:"metalink"`
 	Text	string		`xml:",chardata"`
-	Files	files
+	Files	Files
 }
 
-type files struct {
+type Files struct {
 	XMLName		xml.Name	`xml:"files"`
 	Text		string		`xml:",chardata"`
-	File		[]file		`xml:"file"`
+	File		[]MetaFile		`xml:"file"`
 }
 
-type file struct {
+type MetaFile struct {
 	XMLName		xml.Name	`xml:"file"`
 	Name		string		`xml:"name,attr"`
 	Text		string		`xml:",chardata"`
-	Size		size		`xml:"size"`
-	Resources	[]resources	`xml:"resources"`
-	Verification	fileverification	`xml:"verification"`
+	Size		Size		`xml:"size"`
+	Resources	[]Resources	`xml:"resources"`
+	Verification	FileVerification	`xml:"verification"`
 }
 
-type fileverification struct {
+type FileVerification struct {
 	XMLName		xml.Name	`xml:"verification"`
-	Hashes		[]hash		`xml:"hash"`
+	Hashes		[]Hash		`xml:"hash"`
 }
 
-type hash struct {
+type Hash struct {
 	XMLName		xml.Name	`xml:"hash"`
 	Type		string		`xml:"type,attr"`
 	Text		string		`xml:",chardata"`
 }
 
-type size struct {
+type Size struct {
 	XMLName		xml.Name	`xml:"size"`
 	Text		string		`xml:",chardata"`
 }
 
-type resources struct {
+type Resources struct {
 	XMLName		xml.Name	`xml:"resources"`
-	Urls		[]metaurl	`xml:"url"`
+	Urls		[]Url		`xml:"url"`
 }
 
-type metaurl struct {
+type Url struct {
 	XMLName		xml.Name	`xml:"url"`
 	Type		string		`xml:"type,attr"`
 	Protocol	string		`xml:"protocol,attr"`
