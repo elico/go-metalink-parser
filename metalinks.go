@@ -121,6 +121,7 @@ func ParseFileFromUrl(link string) (Metalink, error) {
 	return metafile, nil
 }
 
+// Compares a file to the metalink file hash using a specified hash.
 func (metadata MetaFile) CompareHash(hash, filename string) (bool, error) {
 	for _, v := range metadata.Verification.Hashes {
 		switch {
